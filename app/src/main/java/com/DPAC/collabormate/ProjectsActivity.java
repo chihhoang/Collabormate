@@ -2,10 +2,8 @@ package com.DPAC.collabormate;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
-import android.app.Notification;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.Menu;
@@ -16,10 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -136,20 +131,6 @@ public class ProjectsActivity extends ListActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    // Will be called via the onClick attribute
-    // of the buttons in projects.xml
-    public void deleteProject(View view) {
-        @SuppressWarnings("unchecked")
-        ArrayAdapter<Project> adapter = (ArrayAdapter<Project>) getListAdapter();
-        Project project = null;
-        if (getListAdapter().getCount() > 0) {
-            project = (Project) getListAdapter().getItem(0);
-            datasource.deleteProject(project);
-            adapter.remove(project);
-        }
-        adapter.notifyDataSetChanged();
-    }
-
     public void newProject(View view){
         @SuppressWarnings("unchecked")
         final AlertDialog.Builder[] builder = {new AlertDialog.Builder(this)};
@@ -170,6 +151,47 @@ public class ProjectsActivity extends ListActivity {
                 Project project = null;
                 project = datasource.createProject(projectName);
                 adapter.add(project);
+                adapter.notifyDataSetChanged();
+            }
+        });
+        //Cancel
+        builder[0].setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder[0].show();
+    }
+
+    public void deleteProject(View view) {
+        @SuppressWarnings("unchecked")
+        final AlertDialog.Builder[] builder = {new AlertDialog.Builder(this)};
+        builder[0].setTitle("New Project Name:");
+
+        // Set up the input
+        final EditText input = new EditText(this);
+        // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        builder[0].setView(input);
+
+        // Add new course
+        builder[0].setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                projectName = input.getText().toString();
+                ArrayAdapter<Project> adapter = (ArrayAdapter<Project>) getListAdapter();
+                Project project = null;
+                if (getListAdapter().getCount() > 0) {
+                    for(int i = 0; i < adapter.getCount(); i++) {
+                        project = (Project) getListAdapter().getItem(i);
+                        if(project.getProject().equalsIgnoreCase(projectName)){
+                            datasource.deleteProject(project);
+                            adapter.remove(project);
+                        }
+                    }
+                }
                 adapter.notifyDataSetChanged();
             }
         });
