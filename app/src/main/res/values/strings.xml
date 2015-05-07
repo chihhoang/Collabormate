@@ -19,7 +19,7 @@
     <!-- Dialog strings -->
     <string name="dialog_about">Group Collaboration Project
         - UW-Madison - CS407 - Spring 2015 Authors:
-        Paul Hurlbut Daniel Kretsch Chi Hoang Andrew Peterson</string>
+        Paul Hurlbut, Daniel Kretsch, Chi Hoang, Andrew Peterson</string>
     <string name="dialog_help">Contact the developers. {Fill in emails} </string>
     <string name="dialog_ok">OK</string>
     <string name="dialog_cancel">Cancel</string>
@@ -52,5 +52,6 @@
     <string name="pref_default_email">johnsmith@wisc.edu</string>
     <string name="pref_phonenumber">Phone Number</string>
     <string name="pref_default_phonenumber">***-***-****</string>
+    <string name="title_activity_overview">Overview</string>
 
 </resources>

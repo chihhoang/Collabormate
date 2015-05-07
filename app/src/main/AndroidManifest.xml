@@ -33,12 +33,16 @@
         <activity
             android:name=".CalendarActivity"
             android:label="@string/title_activity_calendar">
-
         </activity>
 
         <activity
             android:name="Preferences"
             android:theme="@android:style/Theme.Holo">
+        </activity>
+
+        <activity
+            android:name="OverviewActivity"
+            android:label="@string/title_activity_overview">
         </activity>
 
     </application>

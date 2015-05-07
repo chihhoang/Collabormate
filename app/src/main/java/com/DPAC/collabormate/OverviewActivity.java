@@ -14,44 +14,26 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by Chi Hoang on 5/6/2015.
+ */
 
-public class ProjectsActivity extends ListActivity {
+public class OverviewActivity extends ActionBarActivity  {
+
     private ProjectsDataSource datasource;
     private String projectName = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_projects);
-
-        datasource = new ProjectsDataSource(this);
-        datasource.open();
-
-        List<Project> values = datasource.getAllProjects();
-
-        // use the SimpleCursorAdapter to show the
-        // elements in a ListView
-        ArrayAdapter<Project> adapter = new ArrayAdapter<Project>(this,
-                android.R.layout.simple_list_item_1, values);
-        setListAdapter(adapter);
-
-        ListView lv = (ListView)findViewById(android.R.id.list);
-        lv.setAdapter(adapter);
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position,
-                                    long id) {
-                Intent intent = new Intent(ProjectsActivity.this, OverviewActivity.class);
-                startActivity(intent);
-            }
-        });
+        setContentView(R.layout.activity_overview);
     }
 
 
@@ -63,6 +45,22 @@ public class ProjectsActivity extends ListActivity {
         inflater.inflate(R.menu.menu_projects, menu);
 
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        Button cal_button = (Button) findViewById(R.id.calendar_button);
+        cal_button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(OverviewActivity.this, CalendarActivity.class));
+            }
+        });
+
+        Button mes_button = (Button) findViewById(R.id.calendar_button);
+        mes_button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(OverviewActivity.this, CalendarActivity.class));
+            }
+        });
 
         return super.onCreateOptionsMenu(menu);
     }
@@ -136,6 +134,8 @@ public class ProjectsActivity extends ListActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /*
+
     // Will be called via the onClick attribute
     // of the buttons in projects.xml
     public void deleteProject(View view) {
@@ -183,16 +183,16 @@ public class ProjectsActivity extends ListActivity {
 
         builder[0].show();
     }
+    */
+
 
     @Override
     protected void onResume() {
-        datasource.open();
         super.onResume();
     }
 
     @Override
     protected void onPause() {
-        datasource.close();
         super.onPause();
     }
 }
