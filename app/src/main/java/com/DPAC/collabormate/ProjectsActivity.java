@@ -65,7 +65,6 @@ public class ProjectsActivity extends ListActivity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
-        menu.findItem(R.id.action_project).setVisible(false);
         return true;
     }
 

@@ -19,8 +19,15 @@
     <!-- Dialog strings -->
     <string name="dialog_about">Group Collaboration Project
         - UW-Madison - CS407 - Spring 2015 Authors:
-        Paul Hurlbut, Daniel Kretsch, Chi Hoang, Andrew Peterson</string>
-    <string name="dialog_help">Contact the developers. {Fill in emails} </string>
+        \nChi Hoang
+        \nDaniel Kretsch
+        \nPaul Hurlbut
+        \nAndrew Peterson</string>
+    <string name="dialog_help">Contact the developers.
+        \nchoang@wisc.edu
+        \ndkretsch@wisc.edu
+        \nphurlbut@wisc.edu
+        \nandrew.p.peterson@wisc.edu</string>
     <string name="dialog_ok">OK</string>
     <string name="dialog_cancel">Cancel</string>
 

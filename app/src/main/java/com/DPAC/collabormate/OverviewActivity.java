@@ -1,26 +1,15 @@
 package com.DPAC.collabormate;
 
 import android.app.AlertDialog;
-import android.app.ListActivity;
-import android.app.Notification;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.text.InputType;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Chi Hoang on 5/6/2015.
@@ -68,7 +57,6 @@ public class OverviewActivity extends ActionBarActivity  {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
-        menu.findItem(R.id.action_project).setVisible(false);
         return true;
     }
 
