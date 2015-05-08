@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import com.parse.*;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -17,6 +18,9 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Parse.initialize(this, "9Zwa3ybvYWhz5MLHXyuhofJRVUVgU848ln5aUeyW",
+                "HMz4vwC3GmyyZPzsFuh5eBWVUkhS5m0OJpkKilKb");
+        ParseInstallation.getCurrentInstallation().saveInBackground();
     }
 
 
