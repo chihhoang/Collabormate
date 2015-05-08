@@ -5,22 +5,22 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class MySQLiteHelper extends SQLiteOpenHelper {
+public class MySQLiteHelperTask extends SQLiteOpenHelper {
 
-    public static final String TABLE_PROJECTS = "projects";
+    public static final String TABLE_TASKS = "projects";
     public static final String COLUMN_ID = "_id";
-    public static final String COLUMN_PROJECT = "project";
+    public static final String COLUMN_TASK = "project";
 
     private static final String DATABASE_NAME = "projects.db";
     private static final int DATABASE_VERSION = 1;
 
     // Database creation sql statement
     private static final String DATABASE_CREATE = "create table "
-            + TABLE_PROJECTS + "(" + COLUMN_ID
-            + " integer primary key autoincrement, " + COLUMN_PROJECT
+            + TABLE_TASKS + "(" + COLUMN_ID
+            + " integer primary key autoincrement, " + COLUMN_TASK
             + " text not null);";
 
-    public MySQLiteHelper(Context context) {
+    public MySQLiteHelperTask(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
@@ -34,7 +34,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         Log.w(MySQLiteHelper.class.getName(),
                 "Upgrading database from version " + oldVersion + " to "
                         + newVersion + ", which will destroy all old data");
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_PROJECTS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_TASKS);
         onCreate(db);
     }
 }

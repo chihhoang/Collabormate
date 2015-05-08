@@ -17,10 +17,6 @@
             android:name="com.DPAC.collabormate.CalendarProvider"
             android:authorities="com.DPAC.collabormate.calendarprovider" />
 
-        android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">
@@ -35,7 +31,8 @@
         <activity
             android:name=".ProjectsActivity"
             android:label="@string/title_activity_projects"
-            android:theme="@android:style/Theme.Holo">
+            android:theme="@android:style/Theme.DeviceDefault"
+            android:icon="@drawable/black">
         </activity>
 
         <activity
@@ -44,8 +41,7 @@
         </activity>
 
         <activity
-            android:name="Preferences"
-            android:theme="@android:style/Theme.Holo">
+            android:name="Preferences">
         </activity>
 
         <activity

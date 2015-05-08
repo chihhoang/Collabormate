@@ -167,7 +167,7 @@ public class ProjectsActivity extends ListActivity {
     public void deleteProject(View view) {
         @SuppressWarnings("unchecked")
         final AlertDialog.Builder[] builder = {new AlertDialog.Builder(this)};
-        builder[0].setTitle("New Project Name:");
+        builder[0].setTitle("Project Name:");
 
         // Set up the input
         final EditText input = new EditText(this);

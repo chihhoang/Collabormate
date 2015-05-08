@@ -1,29 +1,55 @@
 package com.DPAC.collabormate;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.text.InputType;
 import android.text.format.Time;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ListView;
 
 import java.util.Calendar;
+import java.util.List;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
-public class CalendarActivity extends ActionBarActivity {
-
+public class CalendarActivity extends Activity {
+    private TaskDataSource datasource;
+    private String taskName = "";
+    private ArrayAdapter<Task> adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
 
-        ExtendedCalendarView calendar = (ExtendedCalendarView) findViewById(R.id.calendar);
+        datasource = new TaskDataSource(this);
+        datasource.open();
+
+        List<Task> values = datasource.getAllTasks();
+
+        // use the SimpleCursorAdapter to show the
+        // elements in a ListView
+        adapter = new ArrayAdapter<Task>(this,
+                android.R.layout.simple_list_item_1, values);
+
+        ListView lv = (ListView)findViewById(R.id.taskList);
+        lv.setAdapter(adapter);
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position,
+                                    long id) {
+                //On click check marks task.
+            }
+        });
     }
 
 
@@ -96,16 +122,16 @@ public class CalendarActivity extends ActionBarActivity {
 
     public void addTask(View view) {
         String person = "Steve";
-        int startDayYear = 0;
-        int startDayMonth = 0;
-        int startDayDay = 0;
-        int startTimeHour = 0;
-        int startTimeMin = 0;
+        int startDayYear = 2015;
+        int startDayMonth = 5;
+        int startDayDay = 8;
+        int startTimeHour = 10;
+        int startTimeMin = 30;
 
-        int endDayYear = 0;
-        int endDayMonth = 0;
-        int endDayDay = 0;
-        int endTimeHour = 0;
+        int endDayYear = 2015;
+        int endDayMonth = 8;
+        int endDayDay = 10;
+        int endTimeHour = 10;
         int endTimeMin = 0;
 
         ContentValues values = new ContentValues();
@@ -118,9 +144,11 @@ public class CalendarActivity extends ActionBarActivity {
 
         cal.set(startDayYear, startDayMonth, startDayDay, startTimeHour, startTimeMin);
         values.put(CalendarProvider.START, cal.getTimeInMillis());
-        byte[] julianDay = new byte[0];
-        values.put(CalendarProvider.START_DAY, julianDay);
+
         TimeZone tz = TimeZone.getDefault();
+        int julianDay = Time.getJulianDay(cal.getTimeInMillis(), TimeUnit.MILLISECONDS.toSeconds(tz.getOffset(cal.getTimeInMillis())));
+
+        values.put(CalendarProvider.START_DAY, julianDay);
 
         cal.set(endDayYear, endDayMonth, endDayDay, endTimeHour, endTimeMin);
         int endDayJulian = Time.getJulianDay(cal.getTimeInMillis(), TimeUnit.MILLISECONDS.toSeconds(tz.getOffset(cal.getTimeInMillis())));
@@ -129,6 +157,39 @@ public class CalendarActivity extends ActionBarActivity {
         values.put(CalendarProvider.END_DAY, endDayJulian);
 
         Uri uri = getContentResolver().insert(CalendarProvider.CONTENT_URI, values);
+
+
+        //Adds task to list at bottom
+        @SuppressWarnings("unchecked")
+        final AlertDialog.Builder[] builder = {new AlertDialog.Builder(this)};
+        builder[0].setTitle("New Task:");
+
+        // Set up the input
+        final EditText input = new EditText(this);
+        // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        builder[0].setView(input);
+
+        // Add new course
+        builder[0].setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                taskName = input.getText().toString();
+                Task task = null;
+                task = datasource.createTask(taskName);
+                adapter.add(task);
+                adapter.notifyDataSetChanged();
+            }
+        });
+        //Cancel
+        builder[0].setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder[0].show();
     }
 
 }

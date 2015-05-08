@@ -19,10 +19,10 @@
     <!-- Dialog strings -->
     <string name="dialog_about">Group Collaboration Project
         - UW-Madison - CS407 - Spring 2015 Authors:
-        \nChi Hoang
-        \nDaniel Kretsch
-        \nPaul Hurlbut
-        \nAndrew Peterson</string>
+        \n-Chi Hoang
+        \n-Daniel Kretsch
+        \n-Paul Hurlbut
+        \n-Andrew Peterson</string>
     <string name="dialog_help">Contact the developers.
         \nchoang@wisc.edu
         \ndkretsch@wisc.edu
@@ -58,7 +58,7 @@
     <string name="pref_email">Email</string>
     <string name="pref_default_email">johnsmith@wisc.edu</string>
     <string name="pref_phonenumber">Phone Number</string>
-    <string name="pref_default_phonenumber">***-***-****</string>
+    <string name="pref_default_phonenumber">123-456-7890</string>
     <string name="title_activity_overview">Overview</string>
 
 

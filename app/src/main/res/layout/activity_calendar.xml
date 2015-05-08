@@ -15,4 +15,10 @@
         android:layout_width="match_parent"
         android:layout_below="@id/addTask"/>
 
+    <ListView
+        android:id="@+id/taskList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/calendar"/>
+
 </RelativeLayout>
