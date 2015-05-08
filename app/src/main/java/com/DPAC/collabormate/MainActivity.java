@@ -9,18 +9,32 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import com.parse.*;
 
 
 public class MainActivity extends ActionBarActivity {
+    Button btn_Login = null;
+    Button btn_Signup = null;
+    Button btn_Forget = null;
+    private EditText mUserNameEditText;
+    private EditText mPasswordEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Parse.initialize(this, "9Zwa3ybvYWhz5MLHXyuhofJRVUVgU848ln5aUeyW",
                 "HMz4vwC3GmyyZPzsFuh5eBWVUkhS5m0OJpkKilKb");
         ParseInstallation.getCurrentInstallation().saveInBackground();
+
+        cd = new ConnectionDetector(getApplicationContext());
+
+        btn_Login = (Button) findViewById(R.id.btn_login);
+        btn_Signup = (Button) findViewById(R.id.btn_signup);
+        btn_Forget = (Button) findViewById(R.id.btn_forget);
+        mUserNameEditText = (EditText) findViewById(R.id.usernameEdit)
     }
 
 
@@ -28,15 +42,6 @@ public class MainActivity extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
-
-        Button login = (Button) findViewById(R.id.login);
-
-        login.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, ProjectsActivity.class));
-            }
-        });
 
         return(super.onCreateOptionsMenu(menu));
     }
