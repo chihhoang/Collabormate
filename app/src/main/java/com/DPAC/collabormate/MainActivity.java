@@ -1,15 +1,22 @@
 package com.DPAC.collabormate;
 
+import java.util.Locale;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.Context;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import com.parse.*;
 
 
@@ -19,6 +26,9 @@ public class MainActivity extends ActionBarActivity {
     Button btn_Forget = null;
     private EditText mUserNameEditText;
     private EditText mPasswordEditText;
+
+    Boolean isInternetPresent = false;
+    ConnectionDetector cd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +44,43 @@ public class MainActivity extends ActionBarActivity {
         btn_Login = (Button) findViewById(R.id.btn_login);
         btn_Signup = (Button) findViewById(R.id.btn_signup);
         btn_Forget = (Button) findViewById(R.id.btn_forget);
-        mUserNameEditText = (EditText) findViewById(R.id.usernameEdit)
+        mUserNameEditText = (EditText) findViewById(R.id.usernameEdit);
+        mPasswordEditText = (EditText) findViewById(R.id.passwordEdit);
+
+        btn_Login.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                isInternetPresent = cd.isConnectingToInternet();
+
+                if (isInternetPresent) {
+
+                    attemptLogin();
+
+                } else {
+
+                    showAlertDialog(MainActivity.this, "No Internet Connection", "You don't have" +
+                            " internet connection.", false);
+                }
+
+            }
+        });
+
+        btn_Signup.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(MainActivity.this, SignupActivity.class);
+                startActivity(in);
+            }
+        });
+
+        btn_Forget.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(MainActivity.this, ForgetPass.class);
+                startActivity(in);
+            }
+        });
     }
 
 
@@ -103,10 +149,88 @@ public class MainActivity extends ActionBarActivity {
                 return(true);
 
             case R.id.settings:
-                startActivity(new Intent(this, Preferences.class));
+                startActivity(new Intent(MainActivity.this, Preferences.class));
                 return(true);
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void attemptLogin() {
+        clearErrors();
+
+        String username = mUserNameEditText.getText().toString();
+        String password = mPasswordEditText.getText().toString();
+
+        boolean cancel = false;
+        View focusView = null;
+
+        if (TextUtils.isEmpty(password)) {
+            mPasswordEditText.setError(getString(R.string.error_field_required));
+            focusView = mPasswordEditText;
+            cancel = true;
+        }
+
+        if (TextUtils.isEmpty(username)) {
+            mUserNameEditText.setError(getString(R.string.error_field_required));
+            focusView = mUserNameEditText;
+            cancel = true;
+        }
+
+        if (cancel) {
+            focusView.requestFocus();
+        } else {
+            login(username.toLowerCase(Locale.getDefault()), password);
+        }
+    }
+
+    public void login(String lower, String pass) {
+        ParseUser.logInInBackground(lower, pass, new LogInCallback() {
+            @Override
+            public void done(ParseUser user, ParseException e) {
+                if (e == null)
+                    loginSuccessful();
+                else
+                    loginUnsuccessful();
+            }
+        });
+    }
+
+    protected void loginSuccessful() {
+        Intent in = new Intent(MainActivity.this, ProjectsActivity.class);
+        startActivity(in);
+    }
+
+    protected void loginUnsuccessful() {
+        Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
+        showAlertDialog(this, "Login", "Username or Password is invalid.", false);
+    }
+
+    private void clearErrors() {
+        mUserNameEditText.setError(null);
+        mPasswordEditText.setError(null);
+    }
+
+    @SuppressWarnings("deprecation")
+    public void showAlertDialog(Context context, String title, String message, Boolean status) {
+        AlertDialog alert = new AlertDialog.Builder(context).create();
+
+        //Title
+        alert.setTitle(title);
+
+        //Message
+        alert.setMessage(message);
+
+        //Icon?
+        alert.setIcon(R.drawable.fail);
+
+        //OK button
+        alert.setButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+
+        //Show
+        alert.show();
     }
 }
