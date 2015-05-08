@@ -1,7 +1,4 @@
-package com.tyczj.extendedcalendarview;
-
-import java.util.HashMap;
-import java.util.List;
+package com.DPAC.collabormate;
 
 import android.content.ContentProvider;
 import android.content.ContentUris;
@@ -18,12 +15,15 @@ import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
 
+import java.util.HashMap;
+import java.util.List;
+
 public class CalendarProvider extends ContentProvider {
 	
 	private static final String DATABASE_NAME = "Calendar";
 	private static final String EVENTS_TABLE = "events";
 	private static final int DATABASE_VERSION = 4;
-	private static final String  AUTHORITY = "com.tyczj.extendedcalendarview.calendarprovider";
+	private static final String  AUTHORITY = "com.DPAC.collabormate.calendarprovider";
 	public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/events");
 	public static final Uri CONTENT_ID_URI_BASE = Uri.parse("content://" + AUTHORITY + "/events/");
 	private static final UriMatcher uriMatcher;

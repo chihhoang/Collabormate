@@ -54,4 +54,14 @@
     <string name="pref_default_phonenumber">***-***-****</string>
     <string name="title_activity_overview">Overview</string>
 
+
+    <!-- Calendar strings -->
+    <string name="sunday">Sun</string>
+    <string name="monday">Mon</string>
+    <string name="tuesday">Tues</string>
+    <string name="wednesday">Wed</string>
+    <string name="thursday">Thurs</string>
+    <string name="friday">Fri</string>
+    <string name="saturday">Sat</string>
+
 </resources>

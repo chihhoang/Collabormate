@@ -1,10 +1,10 @@
-package com.tyczj.extendedcalendarview;
+package com.DPAC.collabormate;
+
+import android.graphics.Bitmap;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
-
-import android.graphics.Bitmap;
 
 public class Event {
 	
