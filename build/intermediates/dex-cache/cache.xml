@@ -2,53 +2,32 @@
 <items version="2" >
 
     <item
-        jar="F:\SkyDrive\AndroidStudioProjects\Collabormate\app\libs\quickblox-android-sdk-core-2.2.2.jar"
+        jar="F:\SkyDrive\AndroidStudioProjects\Collabormate\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="50ab24b20316df9aaf9b68fe4f70515670a09620">
-        <dex dex="F:\SkyDrive\AndroidStudioProjects\Collabormate\app\build\intermediates\pre-dexed\debug\quickblox-android-sdk-core-2.2.2-ffaa1049d0d30e3c147a886fdabd7114a50766a9.jar" />
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="F:\SkyDrive\AndroidStudioProjects\Collabormate\app\build\intermediates\pre-dexed\debug\classes-ab9e6ce3328d5fb38a00a69c0f6f446619092f0c.jar" />
     </item>
     <item
-        jar="F:\SkyDrive\AndroidStudioProjects\Collabormate\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.1.1\libs\internal_impl-22.1.1.jar"
+        jar="F:\SkyDrive\AndroidStudioProjects\Collabormate\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="9e070ad32b2700b0343e8e0cccc437733d91ba3a">
-        <dex dex="F:\SkyDrive\AndroidStudioProjects\Collabormate\app\build\intermediates\pre-dexed\debug\internal_impl-22.1.1-2c83457efd4b78c87760068913e4735e69a84172.jar" />
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="F:\SkyDrive\AndroidStudioProjects\Collabormate\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-7fd162539fb6fd5bba5163d919314accbd957881.jar" />
     </item>
     <item
-        jar="F:\SkyDrive\AndroidStudioProjects\Collabormate\app\build\intermediates\exploded-aar\com.google.android.gms\play-services\4.2.42\classes.jar"
+        jar="F:\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="e5f81129dfb3d02df80126512bc98278ed2bb40a">
-        <dex dex="F:\SkyDrive\AndroidStudioProjects\Collabormate\app\build\intermediates\pre-dexed\debug\classes-fc5b227ade520af6e1a419769b0553a96ae042c2.jar" />
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="F:\SkyDrive\AndroidStudioProjects\Collabormate\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-06ed65caa17c1f5493448b5775d90f01ca509474.jar" />
     </item>
     <item
-        jar="F:\SkyDrive\AndroidStudioProjects\Collabormate\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.1.1\classes.jar"
+        jar="F:\SkyDrive\AndroidStudioProjects\Collabormate\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="a3ff3c506644c820eb2bdf06e8339f72be578551">
-        <dex dex="F:\SkyDrive\AndroidStudioProjects\Collabormate\app\build\intermediates\pre-dexed\debug\classes-45ee259a5872796e27917b1d3ea72b67d6b17368.jar" />
-    </item>
-    <item
-        jar="F:\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.1.1\support-annotations-22.1.1.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="01d051a6bfb1218b1db2d3a5af0480ac2c25c42a">
-        <dex dex="F:\SkyDrive\AndroidStudioProjects\Collabormate\app\build\intermediates\pre-dexed\debug\support-annotations-22.1.1-47b5fa3de912e6a4a09e7d590d28eff13c29cc3b.jar" />
-    </item>
-    <item
-        jar="F:\SkyDrive\AndroidStudioProjects\Collabormate\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.1.1\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="c95ba8152923e4872e86a82cfcba9a51c0214328">
-        <dex dex="F:\SkyDrive\AndroidStudioProjects\Collabormate\app\build\intermediates\pre-dexed\debug\classes-92e9a868973385d274201f97f4703c11a5793348.jar" />
-    </item>
-    <item
-        jar="F:\SkyDrive\AndroidStudioProjects\Collabormate\app\libs\quickblox-android-sdk-messages-2.2.2.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="6fa232c02403c8b7a695a4526e183dab713bc444">
-        <dex dex="F:\SkyDrive\AndroidStudioProjects\Collabormate\app\build\intermediates\pre-dexed\debug\quickblox-android-sdk-messages-2.2.2-65445e493ea3d23fd30e312b1b2263ecb9077a65.jar" />
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="F:\SkyDrive\AndroidStudioProjects\Collabormate\app\build\intermediates\pre-dexed\debug\classes-b6f4dabc456627fa239493c6c265e8a2db28f3a0.jar" />
     </item>
 
 </items>
