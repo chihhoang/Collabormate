@@ -54,12 +54,4 @@
     <string name="pref_default_phonenumber">***-***-****</string>
     <string name="title_activity_overview">Overview</string>
 
-    <!-- Messaging -->
-    <string name="app_message">Sample Messages</string>
-    <string name="qb_slogan">YOUR COMMUNICATION \nBACKEND</string>
-    <string name="hint_enter_your_message">Enter Your message here</string>
-    <string name="send">Send notification to yourself</string>
-    <string name="received_messages">Received messages</string>
-    <string name="no_messages">No messages</string>
-
 </resources>

@@ -1,17 +1,26 @@
 package com.DPAC.collabormate;
 
 import android.app.AlertDialog;
+import android.app.ListActivity;
+import android.app.Notification;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
+import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-
-import com.DPAC.collabormate.main.activities.MessagesActivity;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Chi Hoang on 5/6/2015.
@@ -45,11 +54,11 @@ public class OverviewActivity extends ActionBarActivity  {
             }
         });
 
-        Button mes_button = (Button) findViewById(R.id.message_button);
+        Button mes_button = (Button) findViewById(R.id.calendar_button);
         mes_button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(OverviewActivity.this, MessagesActivity.class));
+                startActivity(new Intent(OverviewActivity.this, CalendarActivity.class));
             }
         });
 
