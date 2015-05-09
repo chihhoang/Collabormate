@@ -20,7 +20,10 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:21.0.3'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:+'
     compile 'com.android.support:support-v4:21.0.3'
+    compile 'com.google.android.gms:play-services:4.2.+'
+    compile files('libs/quickblox-android-sdk-core-2.2.2.jar')
+    compile files('libs/quickblox-android-sdk-messages-2.2.2.jar')
 }
