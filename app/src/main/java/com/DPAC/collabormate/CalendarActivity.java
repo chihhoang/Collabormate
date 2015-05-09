@@ -196,18 +196,12 @@ public class CalendarActivity extends Activity implements View.OnClickListener {
     }
 
     private double getJulianDay(int Y, int M, int D) {
-        double A = 0;
-        double B = 0;
-        double C = 0;
-        double E = 0;
-        double F = 0;
-        double JD = 0;
-        A = Y/100;
-        B = A/4;
-        C = 2-A+B;
-        E = 365.25*(Y+4716);
-        F = 30.6001*(M+1);
-        JD= C+D+E+F-1524.5;
+        double A = Y/100;
+        double B = A/4;
+        double C = 2-A+B;
+        double E = 365.25*(Y+4716);
+        double F = 30.6001*(M+1);
+        double JD= C+D+E+F-1524.5;
         return JD;
     }
 
