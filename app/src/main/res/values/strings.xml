@@ -8,6 +8,8 @@
     <string name="title_activity_projects">Projects</string>
     <string name="action_project">Add_Project</string>
     <string name="title_activity_calendar">Calendar</string>
+    <string name="title_activity_signup">Sign Up</string>
+    <string name="title_activity_forgot">Forgot Password</string>
     <string name="username">Username:</string>
     <string name="password">Password:</string>
 

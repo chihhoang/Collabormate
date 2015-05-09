@@ -2,32 +2,46 @@
 <items version="2" >
 
     <item
-        jar="F:\SkyDrive\AndroidStudioProjects\Collabormate\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="F:\SkyDrive\AndroidStudioProjects\Collabormate\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-7fd162539fb6fd5bba5163d919314accbd957881.jar" />
-    </item>
-    <item
-        jar="F:\SkyDrive\AndroidStudioProjects\Collabormate\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="F:\SkyDrive\AndroidStudioProjects\Collabormate\app\build\intermediates\pre-dexed\debug\classes-ab9e6ce3328d5fb38a00a69c0f6f446619092f0c.jar" />
-    </item>
-    <item
-        jar="F:\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex dex="F:\SkyDrive\AndroidStudioProjects\Collabormate\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-06ed65caa17c1f5493448b5775d90f01ca509474.jar" />
-    </item>
-    <item
-        jar="F:\SkyDrive\AndroidStudioProjects\Collabormate\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
+        jar="/Users/paulhurlbut/AndroidStudioProjects/Collabormate1/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="F:\SkyDrive\AndroidStudioProjects\Collabormate\app\build\intermediates\pre-dexed\debug\classes-b6f4dabc456627fa239493c6c265e8a2db28f3a0.jar" />
+        <dex dex="/Users/paulhurlbut/AndroidStudioProjects/Collabormate1/app/build/intermediates/pre-dexed/debug/classes-d7e0069b9ee4e233381d7b768ea09bdd845e7ec9.jar" />
+    </item>
+    <item
+        jar="/Users/paulhurlbut/AndroidStudioProjects/Collabormate1/app/libs/Parse-1.9.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1b065010f3c9d441ede9078aca8eabcd1c81e647">
+        <dex dex="/Users/paulhurlbut/AndroidStudioProjects/Collabormate1/app/build/intermediates/pre-dexed/debug/Parse-1.9.1-550e27d10480db57dbf9565222123217bb7ac779.jar" />
+    </item>
+    <item
+        jar="/Users/paulhurlbut/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.2.0/6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd/bolts-android-1.2.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd">
+        <dex dex="/Users/paulhurlbut/AndroidStudioProjects/Collabormate1/app/build/intermediates/pre-dexed/debug/bolts-android-1.2.0-c2feaa0395dc7a667977778973db2b75fae0fe1a.jar" />
+    </item>
+    <item
+        jar="/Users/paulhurlbut/android-sdks/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="/Users/paulhurlbut/AndroidStudioProjects/Collabormate1/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-c53ed6dac535988a2ffe510d3f4c96866c242b87.jar" />
+    </item>
+    <item
+        jar="/Users/paulhurlbut/AndroidStudioProjects/Collabormate1/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="/Users/paulhurlbut/AndroidStudioProjects/Collabormate1/app/build/intermediates/pre-dexed/debug/classes-b8f2d81d8aeb32b1270cf4a8ba5534c75b731017.jar" />
+    </item>
+    <item
+        jar="/Users/paulhurlbut/AndroidStudioProjects/Collabormate1/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="/Users/paulhurlbut/AndroidStudioProjects/Collabormate1/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-bdda362f4b2303c35ad485d3f915321f0c1ce66a.jar" />
     </item>
 
 </items>

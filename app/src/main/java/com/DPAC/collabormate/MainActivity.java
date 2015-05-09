@@ -77,7 +77,7 @@ public class MainActivity extends ActionBarActivity {
         btn_Forget.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in = new Intent(MainActivity.this, ForgetPass.class);
+                Intent in = new Intent(MainActivity.this, ForgetPassActivity.class);
                 startActivity(in);
             }
         });

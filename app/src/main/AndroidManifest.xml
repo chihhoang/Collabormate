@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.DPAC.collabormate" >
+
     <uses-sdk
         android:minSdkVersion="11"
         android:targetSdkVersion="18"/>
@@ -20,7 +21,8 @@
       to match your app's package name + ".permission.C2D_MESSAGE".
       Changed! to Package name from Chi's Git
     -->
-    <permission android:protectionLevel="signature"
+    <permission
+        android:protectionLevel="signature"
         android:name="com.DPAC.collabormate.permission.C2D_MESSAGE" />
     <uses-permission android:name="com.DPAC.collabormate.permission.C2D_MESSAGE" />
 
@@ -41,16 +43,27 @@
 
         <activity
             android:name=".ProjectsActivity"
-            android:label="@string/title_activity_projects" >
+            android:label="@string/title_activity_projects">
         </activity>
 
         <activity
             android:name=".CalendarActivity"
-            android:label="@string/title_activity_calendar" >
+            android:label="@string/title_activity_calendar">
         </activity>
 
         <activity
-            android:name="Preferences">
+            android:name=".SignupActivity"
+            android:label="@string/title_activity_signup">
+        </activity>
+
+        <activity
+            android:name=".ForgetPassActivity"
+            android:label="@string/title_activity_forgot">
+        </activity>
+
+        <activity
+            android:name="Preferences"
+            android:label="Preferences">
         </activity>
 
         <service android:name="com.parse.PushService" />
