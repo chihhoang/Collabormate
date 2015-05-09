@@ -7,11 +7,11 @@ import android.util.Log;
 
 public class MySQLiteHelperTask extends SQLiteOpenHelper {
 
-    public static final String TABLE_TASKS = "projects";
+    public static final String TABLE_TASKS = "tasks";
     public static final String COLUMN_ID = "_id";
-    public static final String COLUMN_TASK = "project";
+    public static final String COLUMN_TASK = "task";
 
-    private static final String DATABASE_NAME = "projects.db";
+    private static final String DATABASE_NAME = "task.db";
     private static final int DATABASE_VERSION = 1;
 
     // Database creation sql statement

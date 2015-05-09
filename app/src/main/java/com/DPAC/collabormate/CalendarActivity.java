@@ -2,54 +2,80 @@ package com.DPAC.collabormate;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.InputType;
-import android.text.format.Time;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ListView;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.List;
+import java.util.Locale;
 import java.util.TimeZone;
-import java.util.concurrent.TimeUnit;
 
-public class CalendarActivity extends Activity {
-    private TaskDataSource datasource;
-    private String taskName = "";
-    private ArrayAdapter<Task> adapter;
+public class CalendarActivity extends Activity implements View.OnClickListener {
+    //UI References
+    private EditText fromDateEtxt;
+    private EditText toDateEtxt;
+
+    private DatePickerDialog fromDatePickerDialog;
+    private DatePickerDialog toDatePickerDialog;
+
+    private SimpleDateFormat dateFormatter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
 
-        datasource = new TaskDataSource(this);
-        datasource.open();
+        dateFormatter = new SimpleDateFormat("MM-dd-yyyy", Locale.US);
 
-        List<Task> values = datasource.getAllTasks();
+        findViewsById();
 
-        // use the SimpleCursorAdapter to show the
-        // elements in a ListView
-        adapter = new ArrayAdapter<Task>(this,
-                android.R.layout.simple_list_item_1, values);
+        setDateTimeField();
 
-        ListView lv = (ListView)findViewById(R.id.taskList);
-        lv.setAdapter(adapter);
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position,
-                                    long id) {
-                //On click check marks task.
+    }
+
+    private void findViewsById() {
+        fromDateEtxt = (EditText) findViewById(R.id.etxt_fromdate);
+        fromDateEtxt.setInputType(InputType.TYPE_NULL);
+        fromDateEtxt.requestFocus();
+
+        toDateEtxt = (EditText) findViewById(R.id.etxt_todate);
+        toDateEtxt.setInputType(InputType.TYPE_NULL);
+    }
+
+    private void setDateTimeField() {
+        fromDateEtxt.setOnClickListener(this);
+        toDateEtxt.setOnClickListener(this);
+
+        Calendar newCalendar = Calendar.getInstance();
+        fromDatePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                Calendar newDate = Calendar.getInstance();
+                newDate.set(year, monthOfYear, dayOfMonth);
+                fromDateEtxt.setText(dateFormatter.format(newDate.getTime()));
             }
-        });
+
+        },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+
+        toDatePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                Calendar newDate = Calendar.getInstance();
+                newDate.set(year, monthOfYear, dayOfMonth);
+                toDateEtxt.setText(dateFormatter.format(newDate.getTime()));
+            }
+
+        },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
     }
 
 
@@ -58,7 +84,16 @@ public class CalendarActivity extends Activity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_calendar, menu);
 
-        return(super.onCreateOptionsMenu(menu));
+        return (super.onCreateOptionsMenu(menu));
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(view == fromDateEtxt) {
+            fromDatePickerDialog.show();
+        } else if(view == toDateEtxt) {
+            toDatePickerDialog.show();
+        }
     }
 
     @Override
@@ -88,7 +123,7 @@ public class CalendarActivity extends Activity {
                 AlertDialog dialog = builder.create();
 
                 builder.show();
-                return(true);
+                return (true);
 
             case R.id.help:
                 // Use the Builder class for convenient dialog construction
@@ -110,86 +145,70 @@ public class CalendarActivity extends Activity {
                 AlertDialog dialog1 = builder1.create();
 
                 builder1.show();
-                return(true);
+                return (true);
 
             case R.id.settings:
                 startActivity(new Intent(this, Preferences.class));
-                return(true);
+                return (true);
         }
 
         return super.onOptionsItemSelected(item);
     }
 
     public void addTask(View view) {
-        String person = "Steve";
-        int startDayYear = 2015;
-        int startDayMonth = 5;
-        int startDayDay = 8;
-        int startTimeHour = 10;
-        int startTimeMin = 30;
 
-        int endDayYear = 2015;
-        int endDayMonth = 8;
-        int endDayDay = 10;
-        int endTimeHour = 10;
+        int startDayYear = fromDatePickerDialog.getDatePicker().getYear();
+        int startDayMonth = fromDatePickerDialog.getDatePicker().getMonth();
+        int startDayDay = fromDatePickerDialog.getDatePicker().getDayOfMonth();
+        int startTimeHour = 00;
+        int startTimeMin = 00;
+
+        int endDayYear = toDatePickerDialog.getDatePicker().getYear();
+        int endDayMonth = toDatePickerDialog.getDatePicker().getMonth();
+        int endDayDay = toDatePickerDialog.getDatePicker().getDayOfMonth();
+        int endTimeHour = 0;
         int endTimeMin = 0;
 
         ContentValues values = new ContentValues();
-        values.put(CalendarProvider.COLOR, Event.COLOR_RED);
+        values.put(CalendarProvider.COLOR, Event.COLOR_BLUE);
         values.put(CalendarProvider.DESCRIPTION, "Some Description");
-        values.put(CalendarProvider.LOCATION, "Some location");
-                values.put(CalendarProvider.EVENT, "Event name");
+        values.put(CalendarProvider.LOCATION, "Madison");
+        values.put(CalendarProvider.EVENT, "Event name");
 
-                        Calendar cal = Calendar.getInstance();
+        Calendar cal = Calendar.getInstance();
 
         cal.set(startDayYear, startDayMonth, startDayDay, startTimeHour, startTimeMin);
         values.put(CalendarProvider.START, cal.getTimeInMillis());
 
         TimeZone tz = TimeZone.getDefault();
-        int julianDay = Time.getJulianDay(cal.getTimeInMillis(), TimeUnit.MILLISECONDS.toSeconds(tz.getOffset(cal.getTimeInMillis())));
 
+        double julianDay = getJulianDay(startDayYear, startDayMonth, startDayDay);
         values.put(CalendarProvider.START_DAY, julianDay);
 
         cal.set(endDayYear, endDayMonth, endDayDay, endTimeHour, endTimeMin);
-        int endDayJulian = Time.getJulianDay(cal.getTimeInMillis(), TimeUnit.MILLISECONDS.toSeconds(tz.getOffset(cal.getTimeInMillis())));
+        double endDayJulian = getJulianDay(endDayYear, endDayMonth, endDayDay);
 
         values.put(CalendarProvider.END, cal.getTimeInMillis());
         values.put(CalendarProvider.END_DAY, endDayJulian);
 
         Uri uri = getContentResolver().insert(CalendarProvider.CONTENT_URI, values);
 
+    }
 
-        //Adds task to list at bottom
-        @SuppressWarnings("unchecked")
-        final AlertDialog.Builder[] builder = {new AlertDialog.Builder(this)};
-        builder[0].setTitle("New Task:");
-
-        // Set up the input
-        final EditText input = new EditText(this);
-        // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
-        input.setInputType(InputType.TYPE_CLASS_TEXT);
-        builder[0].setView(input);
-
-        // Add new course
-        builder[0].setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                taskName = input.getText().toString();
-                Task task = null;
-                task = datasource.createTask(taskName);
-                adapter.add(task);
-                adapter.notifyDataSetChanged();
-            }
-        });
-        //Cancel
-        builder[0].setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-
-        builder[0].show();
+    private double getJulianDay(int Y, int M, int D) {
+        double A = 0;
+        double B = 0;
+        double C = 0;
+        double E = 0;
+        double F = 0;
+        double JD = 0;
+        A = Y/100;
+        B = A/4;
+        C = 2-A+B;
+        E = 365.25*(Y+4716);
+        F = 30.6001*(M+1);
+        JD= C+D+E+F-1524.5;
+        return JD;
     }
 
 }

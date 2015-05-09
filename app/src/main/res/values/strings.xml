@@ -70,5 +70,7 @@
     <string name="thursday">Thurs</string>
     <string name="friday">Fri</string>
     <string name="saturday">Sat</string>
+    <string name="from_date">From Date</string>
+    <string name="to_date">To Date</string>
 
 </resources>
